@@ -275,7 +275,7 @@ public:
         PUBKEY_ADDRESS = 85, // lolcoin addresses start with L
         SCRIPT_ADDRESS = 87,
         PUBKEY_ADDRESS_TEST = 86,
-        SCRIPT_ADDRESS_TEST = 86,
+        SCRIPT_ADDRESS_TEST = 88,
     };
 
     bool Set(const CKeyID &id) {

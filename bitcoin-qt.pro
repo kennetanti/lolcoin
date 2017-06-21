@@ -44,11 +44,11 @@ contains(RELEASE, 1) {
     # This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
 }
 # for extra security (see: https://wiki.debian.org/Hardening): this flag is GCC compiler-specific
-QMAKE_CXXFLAGS *= -D_FORTIFY_SOURCE=2
+QMAKE_CXXFLAGS *= -D_FORTIFY_SOURCE=2 -fpermissive
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
 win32:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat
-# on Windows: enable GCC large address aware linker flag
-win32:QMAKE_LFLAGS *= -Wl,--large-address-aware
+# on Windows(x86): enable GCC large address aware linker flag
+#win32:QMAKE_LFLAGS *= -Wl,--large-address-aware
 
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support
@@ -350,7 +350,8 @@ OTHER_FILES += README.md \
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
     macx:BOOST_LIB_SUFFIX = -mt
-    win32:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_50
+#    win32:BOOST_LIB_SUFFIX = -mgw44-mt-s-1_50
+    win32:BOOST_LIB_SUFFIX = -mt
 }
 
 isEmpty(BOOST_THREAD_LIB_SUFFIX) {
