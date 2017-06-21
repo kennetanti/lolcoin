@@ -26,7 +26,6 @@
 #include <ifaddrs.h>
 #endif
 
-//typedef u_int SOCKET;
 #ifdef WIN32
 #define MSG_NOSIGNAL        0
 #define MSG_DONTWAIT        0
@@ -44,6 +43,7 @@ typedef int socklen_t;
 #define WSAENOTSOCK         EBADF
 #define INVALID_SOCKET      (SOCKET)(~0)
 #define SOCKET_ERROR        -1
+typedef u_int SOCKET;
 #endif
 
 inline int myclosesocket(SOCKET& hSocket)
